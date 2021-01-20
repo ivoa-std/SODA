@@ -30,3 +30,7 @@ VECTORFIGURES =
 AUX_FILES = 
 
 include ivoatex/Makefile
+
+## temporary:
+role_diagram.pdf:
+	echo "static REC-SODA-1.0 role_diagram.pdf"
