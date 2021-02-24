@@ -654,6 +654,47 @@ other filtering parameters).
 The UCD  describing the POL parameter is
 \ucd{meta.code;phys.polarization}.
 
+\subsubsection{SPATRES}
+
+Implementation of this parameter is optional. Using a SPATRES value different from the original spatial resolution makes the service to rebin the data in order to match the spatres value. The parameter unit is arcsec.  
+
+Example : SPATRES = 3  
+
+This statement resquests a response dataset with spatial resolution equal to 3 arcsec.
+
+\subsubsection{SPECRP}
+
+Implementation of this parameter is optional. Using a SPECREC value different from the original spectral resolving power makes the service to rebin the data in order to match the specrp resolution power value. The parameter is uniless.  
+
+Example : SPECRP = 1000  
+
+This statement resquests a response dataset with spectral resolving power  equal to 1000.
+
+\subsubsection{TIMERES}
+
+Implementation of this parameter is optional. Using a TIMERES value different from the original time resolution  makes the service to rebin the data in order to match the timeres value. The parameter unit is seconds.  
+
+Example : TIMERES = 0.001  
+
+This statement resquests a response dataset with time resolution equal to 1 ms.
+
+\subsubsection{PROJECTION}
+
+Implementation of this parameter is optional. Using a PROJECTION value different from the original sky projection of the data makes the service repoject the data onto the requested sky projection. The possible values of this parameter is similar to the list of WCS projections and expressed with the 3 lettre WCS projection code.
+
+Example PROJECTION = SIN
+
+This statement requests a response dataset reprojected using the sinus sky projection.
+
+\subsubsection{ROTATION}
+
+Implementation of this parameter is optional. Using a ROTATION value different from the original rotation of the vertical axis of the data with respect to the North makes the service rotate the data in order to match  the requested position angle. The  parameter unit is in degree and is in the range -180 to +180.
+
+Example ROTATION = 50.0
+
+This statement requests a response dataset rotated 50 degrees towards East.
+
+
 
 \subsection{Filtering parameters and ObsCore data model}
 
