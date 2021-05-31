@@ -417,6 +417,19 @@ The UCD describing the ID parameter is
 Filtering parameters are used to extract subsets of large
 datasets or data files. The extraction uses a best possible match to the requested subset. In case the parameter values excede the size of the archived dataset  the service operates a reduction of these values to the archived dataset size.
 
+\subsubsection{MOC}
+The MOC parameter defines a subset of space using the \xtype{moc} defined in DALI. The parameter syntax is defined as in the MOC specification \citep{MOC2}
+
+Examples :
+\begin{itemize}
+
+\item Extracting cells 1 and 2 at order 1 will read this way MOC = 1/1 2
+\item Extracting cells 1 at order 1 and cells 1 to 6 at order 2 will read MOC = 1/1 2/1-6
+
+\end{itemize}
+
+
+At the time of writing there is no possibility to extend this ascii syntax to TMOC or STMOC
 
 \subsubsection{POS}
 \label{sec:POS}
