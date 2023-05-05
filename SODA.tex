@@ -83,19 +83,19 @@ transfer.
 
 Figure~\ref{fig:architecture} shows how SODA fits into the IVOA architecture.
 SODA services conform to the Data Access Layer Interface (DALI,
-\citet{std:DALI}) specification, 
+\citet{2013ivoa.spec.1129D}) specification, 
 including the Virtual Observatory Support Interfaces (VOSI,
-\citet{std:VOSI}) resources.
+\citet{2011ivoa.spec.0531G}) resources.
 
 Within the IVOA architecture, SODA services could be found and used in
 several ways. First, a SODA service could be found in the IVOA Registry
 and used directly. A description of a SODA service may be found along
 with specific dataset metadata at either the data discovery phase using
-Simple Image Access (SIA, \citet{std:SIAv2}) or Table Access Protocol
-(TAP, \citet{std:TAP}) and the ObsCore data model \citep{std:OBSCORE} or
-via a DataLink \citep{std:DataLink} service. The service descriptors and
-three-factor semantics rely on UCDs \citep{std:UCD} and the VO Unit
-specification \citep{std:VOUNIT}. Since the discovery of SODA services
+Simple Image Access (SIA, \citet{2015ivoa.spec.1223D}) or Table Access Protocol
+(TAP, \citet{2010ivoa.spec.0327D}) and the ObsCore data model \citep{2011ivoa.spec.1028T} or
+via a DataLink \citep{2015ivoa.spec.0617D} service. The service descriptors and
+three-factor semantics rely on UCDs \citep{2005ivoa.spec.1231D} and the VO Unit
+specification \citep{2014ivoa.spec.0523D}. Since the discovery of SODA services
 makes use of DataLink service descriptor(s) to provide parameter
 metadata, the VOSI-capabilities specified in
 Section~\ref{sec:capabilities} do not make use of a registry extension.
@@ -417,6 +417,19 @@ The UCD describing the ID parameter is
 Filtering parameters are used to extract subsets of large
 datasets or data files. The extraction uses a best possible match to the requested subset. In case the parameter values excede the size of the archived dataset  the service operates a reduction of these values to the archived dataset size.
 
+\subsubsection{MOC}
+The MOC parameter defines a subset of space using the \xtype{moc} defined in DALI. The parameter syntax is defined as in the MOC specification \citep{MOC2}
+
+Examples :
+\begin{itemize}
+
+\item Extracting cells 1 and 2 at order 1 will read this way MOC = 1/1 2
+\item Extracting cells 1 at order 1 and cells 1 to 6 at order 2 will read MOC = 1/1 2/1-6
+
+\end{itemize}
+
+
+At the time of writing there is no possibility to extend this ascii syntax to TMOC or STMOC
 
 \subsubsection{POS}
 \label{sec:POS}
@@ -715,7 +728,7 @@ The POL parameter constrain the  list of polarization states in  the output virt
 valid values for this param are included in the list given by the value
 of the pol\_states attribute of the archived dataset.
 
-\begin{table}[mht]
+\begin{table}[ht]
 \begin{tabular}{l l l}
 \sptablerule
 \textbf{SODA}&\textbf{ObsCore utypes}&\textbf{ObsCore}\cr
@@ -756,7 +769,7 @@ DAL working group\footnote{At the time of writing, this is\\
 
 Table~\ref{table:freepars} is an exemple of definition of additional custom non-standard parameters.
 
-\begin{table}[mht]
+\begin{table}[ht]
 \begin{tabular}{l l l l}
 \sptablerule
 \textbf{Name}&\textbf{UCD}&\textbf{Unit}&\textbf{Semantics} \cr
@@ -774,7 +787,7 @@ POL&meta.code;phys.polarization&&cf.~sect.~\ref{sec:POL} \cr
 \label{table:standardpars}
 \end{table}
 
-\begin{table}[mht]
+\begin{table}[ht]
 \begin{tabular}{l l l l}
 \sptablerule
 \textbf{Name}&\textbf{UCD}&\textbf{Unit}&\textbf{Semantics} \cr
@@ -823,7 +836,7 @@ queries.
 The DataLink recommendation provides a mechanism
 to include ``a description of a SODA service'' using a standard resource
 called a service descriptor. The service descriptor can be included in any
-VOTable \citep{std:VOTable} output and can describe the parameters for
+VOTable \citep{2013ivoa.spec.0920O} output and can describe the parameters for
 use with a DALI-sync or DALI-async compliant capability which may be a standard
  service or a custom service. Since the service descriptor can describe all input parameters,
 it can declare available standard parameters, extensions (custom
@@ -1279,6 +1292,6 @@ filter.
 
 This is the initial document version.
 
-\bibliography{ivoatex/ivoabib}
+\bibliography{ivoatex/ivoabib,ivoatex/docrepo}
 
 \end{document}
