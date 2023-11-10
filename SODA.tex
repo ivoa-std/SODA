@@ -412,6 +412,52 @@ ID parameter.
 The UCD describing the ID parameter is
 \ucd{meta.ref.url;meta.curation}.SODA
 
+\subsubsection{RESPONSEFORMAT}
+\label{sec:FORMAT}
+
+This optional parameter allows format conversion. By default the native format is kept. Values taken by this parameter will be the media types of the target format. \\
+Examples: 
+\begin{itemize}
+\item Conversion of a FITS image to png: 
+\begin{lstlisting}
+RESPONSEFORMAT="image/png"
+\end{lstlisting}
+\item Conversion of one or several FITS images or cubes to HiPS format. 
+\begin{lstlisting}
+RESPONSEFORMAT="application/HiPS"
+\end{lstlisting}
+\item And the reverse conversion: 
+\begin{lstlisting}
+RESPONSEFORMAT="application/fits"
+\end{lstlisting}
+\end{itemize}
+
+The format conversion can be done in combination with the filtering or the transformation described below. When a conversion is not made available by the service or is  impossible the service MUST answer by an error message stating "Format transformation not available". By default there will be no format conversion.
+
+\subsubsection{METADATA}
+\label{sec:METADATA}
+This optional parameter allows to provide dataset metadata instead of an excerpt of the dataset itself. It allows to retrieve the metadata consistent with a specific   datamodel given by its standardID or a FITS header for the "headder" value.  All SODA service MUST be able to provide at least the Obscore metadata. Other datamodels are possible.
+
+This parameter can be used in combination with filtering or transformation parameters in such a way that the metadata describe the filtered or transformed dataset.
+
+ The "none" value for this parameter will drive the excerpt of data as in version 1.0 of the SODA specification. The default value fo this parameter is "None". 
+ 
+ Example - for a FITS header : 
+\begin{lstlisting}
+METADATA="header"
+\end{lstlisting} 
+ 
+ 
+\subsubsection{DPTYPE}
+\label{sec:DPTYPE}
+This optional  parameter allows to modify the product type of the output dataset. Typical case is to reduce a spectral subcube to a 2D image or a spectrum. DPTYPE allowed values are taken from the dataproduct\_type vocabulary. This parameter is binded to the filtering parameters which define the ranges and area in which to sum up the dataset measurements to achive the dimensionality reduction.  
+
+Example - for a spectrum:
+\begin{lstlisting}
+DPTYPE="spectrum"&POS=POLYGON 50.5 27.2 50.7 27.2 50.7 27.6 50.5 27.6
+\end{lstlisting}
+ 
+
 \subsection{Filtering Parameters}
 
 Filtering parameters are used to extract subsets of large
@@ -542,15 +588,29 @@ xtype defined in DALI.
 Example: a  polygon from (12,34) to (14,34) to (14,36) to (12,36) and
 (implicitly) back to (12,34):
 
-\begin{lstlisting}
-POLYGON=12 34 14 34 14 36 12 36
-\end{lstlisting}
 
 The UCD describing the POLYGON parameter is
 \ucd{pos.outline;obs}.
 
 POLYGON is equivalent in functionality to \texttt{POS=POLYGON ...}.  Data type  and unit metadata are unambiguously defined.
 
+\subsubsection{PIXELS}
+\label{sec:PIXELS}
+The PIXELS parameter defines a subpart of the dataset to be extracted following the fitsio syntax. \\
+Examples :
+
+\begin{itemize}
+\item pixels 50 to 70 in x and 200 to 300 in y from a 2D image 
+\begin{lstlisting}
+PIXELS=[50:70,200:300]
+\end{lstlisting}
+
+\item pixels 50 to 70 in x, 200 to 300  in y and all pixels in z  from a 3D cube
+\begin{lstlisting}
+PIXELS=[50:70,200:300,*]
+\end{lstlisting}
+
+\end{itemize}
 
 \subsubsection{BAND}
 \label{sec:BAND}
@@ -667,6 +727,9 @@ other filtering parameters).
 The UCD  describing the POL parameter is
 \ucd{meta.code;phys.polarization}.
 
+\subsection{Transform parameters}
+
+This subsection is an addition of the current specification. The parameters described here were not present in SODA version 1.0. they define together a sODA service capability which is optional for a SODA service.
 \subsubsection{SPATRES}
 
 
