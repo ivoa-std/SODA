@@ -7,7 +7,7 @@ DOCNAME = SODA
 DOCVERSION = 1.1
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2023-11-09
+DOCDATE = 2024-03-15
 
 # What is it you're writing: NOTE, WD, PR, or REC
 DOCTYPE = REC
