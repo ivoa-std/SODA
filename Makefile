@@ -10,7 +10,7 @@ DOCVERSION = 1.1
 DOCDATE = 2024-03-15
 
 # What is it you're writing: NOTE, WD, PR, or REC
-DOCTYPE = REC
+DOCTYPE = WD
 
 AUTHOR_EMAIL=francois.bonnarel@astro.unistra.fr
 
