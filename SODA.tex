@@ -596,7 +596,8 @@ POLYGON is equivalent in functionality to \texttt{POS=POLYGON ...}.  Data type  
 
 \subsubsection{PIXELS}
 \label{sec:PIXELS}
-The PIXELS parameter defines a subpart of the dataset to be extracted following the fitsio syntax. \\
+The PIXELS parameter defines a subpart of the dataset to be extracted following the fitsio syntax. 
+It is also possible to extract only every pixel upon n.\\
 Examples :
 
 \begin{itemize}
@@ -610,7 +611,13 @@ PIXELS=[50:70,200:300]
 PIXELS=[50:70,200:300,*]
 \end{lstlisting}
 
+\item every even pixel from 50 to 70 in x, 200 to 300  in y and every pixel upon 10 between 100 and 1500 in z   from a 3D cube
+\begin{lstlisting}
+PIXELS=[50:70:2,200:300:2,100:1500:10]
+\end{lstlisting}
+
 \end{itemize}
+
 
 \subsubsection{BAND}
 \label{sec:BAND}
